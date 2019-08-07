@@ -1,5 +1,6 @@
 # XWFFmpegSDK
 
+
 [![CI Status](https://img.shields.io/travis/ly-080208@163.com/XWFFmpegSDK.svg?style=flat)](https://travis-ci.org/ly-080208@163.com/XWFFmpegSDK)
 [![Version](https://img.shields.io/cocoapods/v/XWFFmpegSDK.svg?style=flat)](https://cocoapods.org/pods/XWFFmpegSDK)
 [![License](https://img.shields.io/cocoapods/l/XWFFmpegSDK.svg?style=flat)](https://cocoapods.org/pods/XWFFmpegSDK)
@@ -40,3 +41,5 @@ pod lib lint XWFFmpegSDK.podspec  --no-clean --verbose --allow-warnings --use-li
 更新pod（cd到Podfile文件所在目录下）
 
 pod update --verbose --no-repo-update 或者pod install
+
+封装FFmpeg
