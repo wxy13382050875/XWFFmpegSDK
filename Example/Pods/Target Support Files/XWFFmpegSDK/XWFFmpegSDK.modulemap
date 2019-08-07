@@ -1,0 +1,6 @@
+framework module XWFFmpegSDK {
+  umbrella header "XWFFmpegSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}

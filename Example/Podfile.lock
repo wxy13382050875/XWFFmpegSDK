@@ -1,0 +1,27 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - XWFFmpegSDK (1.0.0)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - XWFFmpegSDK (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  XWFFmpegSDK:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  XWFFmpegSDK: 673675e0952892511254b2e7f8fea75ee4e303cd
+
+PODFILE CHECKSUM: 79f8c8655e88b84522f98c64141aeabc726da7db
+
+COCOAPODS: 1.7.5

@@ -1,0 +1,11 @@
+CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/XWFFmpegSDK
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/../../XWFFmpegSDK/Frameworks"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+OTHER_LDFLAGS = $(inherited) -framework "chromaprint" -framework "expat" -framework "fontconfig" -framework "freetype" -framework "fribidi" -framework "giflib" -framework "gmp" -framework "gnutls" -framework "jpeg" -framework "kvazaar" -framework "lame" -framework "leptonica" -framework "libaom" -framework "libass" -framework "libavcodec" -framework "libavdevice" -framework "libavfilter" -framework "libavformat" -framework "libavutil" -framework "libcharset" -framework "libhogweed" -framework "libiconv" -framework "libilbc" -framework "libnettle" -framework "libogg" -framework "libopencore-amrnb" -framework "libopencore-amrwb" -framework "libpng" -framework "libsndfile" -framework "libswresample" -framework "libswscale" -framework "libtheora" -framework "libtheoradec" -framework "libtheoraenc" -framework "libuuid" -framework "libvorbis" -framework "libvorbisenc" -framework "libvorbisfile" -framework "libvpx" -framework "libwebp" -framework "libwebpdecoder" -framework "libwebpdemux" -framework "libxml2" -framework "mobileffmpeg" -framework "opus" -framework "sdl" -framework "shine" -framework "snappy" -framework "soxr" -framework "speex" -framework "tesseract" -framework "tiff" -framework "twolame" -framework "wavpack"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}
+PODS_TARGET_SRCROOT = ${PODS_ROOT}/../..
+PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.${PRODUCT_NAME:rfc1034identifier}
+SKIP_INSTALL = YES
+VALID_ARCHS[sdk=iphonesimulator*] =

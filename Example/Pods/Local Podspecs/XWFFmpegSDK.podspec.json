@@ -1,0 +1,29 @@
+{
+  "name": "XWFFmpegSDK",
+  "version": "1.0.0",
+  "summary": "A short description of XWFFmpegSDK.",
+  "description": "封装ffmpegSDK",
+  "homepage": "https://github.com/ly-080208@163.com/XWFFmpegSDK",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ly-080208@163.com": "ly-080208@163.com"
+  },
+  "source": {
+    "git": "https://github.com/ly-080208@163.com/XWFFmpegSDK.git",
+    "tag": "1.0.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "pod_target_xcconfig": {
+    "VALID_ARCHS[sdk=iphonesimulator*]": ""
+  },
+  "source_files": "XWFFmpegSDK/**/*.{h,m}",
+  "public_header_files": "XWFFmpegSDK/**/*.h",
+  "vendored_frameworks": "XWFFmpegSDK/Frameworks/*.framework",
+  "requires_arc": true,
+  "resources": "XWFFmpegSDK/**/*.{bundle,png,plist}"
+}
