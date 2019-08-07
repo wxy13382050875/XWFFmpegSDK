@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'XWFFmpegSDK_Example' do
+  pod 'XWFFmpegSDK', :path => '../'
+
+  target 'XWFFmpegSDK_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end
