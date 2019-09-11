@@ -7,12 +7,14 @@
 //
 
 #import "XWAppDelegate.h"
-
+#import "XWAppDelegate+HQ.h"
 @implementation XWAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    // 初始化项目
+    [self registerRoutes];
     return YES;
 }
 

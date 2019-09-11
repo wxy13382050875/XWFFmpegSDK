@@ -1,13 +1,40 @@
 use_frameworks!
 
-platform :ios, '8.0'
+platform :ios, '9.3'
 
 target 'XWFFmpegSDK_Example' do
   pod 'XWFFmpegSDK', :path => '../'
 
-  target 'XWFFmpegSDK_Tests' do
-    inherit! :search_paths
-
-    pod 'FBSnapshotTestCase'
-  end
+  # Pods for HQMVVM_RAC_Router
+  pod 'AFNetworking'
+  
+  pod 'SDWebImage', '~> 4.0.0'
+  
+  pod 'DateTools'
+  
+  pod 'MBProgressHUD'
+  
+  pod 'MJRefresh'
+  
+  pod 'MJExtension'
+  
+  pod 'SDAutoLayout', '~> 2.1.3'
+  
+  pod 'MyLayout'
+  
+  pod 'ReactiveCocoa’,2.0
+  
+  pod 'JPFPSStatus', '~> 0.1'
+  
+  pod 'JLRoutes'
+  
+  pod 'PAPreferences', '~> 0.4'
+  
+  pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
+  
+  pod 'JXCategoryView'
+  
+  pod 'Masonry'
+  
+  pod 'TZImagePickerController'
 end

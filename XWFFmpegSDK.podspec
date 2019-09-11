@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'XWFFmpegSDK'
-    s.version          = '1.0.0'
+    s.version          = '1.0.1'
     s.summary          = 'A short description of XWFFmpegSDK.'
     
     # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
     s.source           = { :git => 'https://github.com/ly-080208@163.com/XWFFmpegSDK.git', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
     
-    s.ios.deployment_target = '8.0'
+    s.ios.deployment_target = '9.3'
     
     s.pod_target_xcconfig = { 'VALID_ARCHS[sdk=iphonesimulator*]' => '' }
     #相对路径很重要，不正确无法引入SDK
@@ -45,4 +45,9 @@ Pod::Spec.new do |s|
     # s.public_header_files = 'Pod/Classes/**/*.h'
     # s.frameworks = 'UIKit', 'MapKit'
     # s.dependency 'AFNetworking', '~> 2.3'
+    s.dependency 'mobile-ffmpeg-full', '~> 4.2.2'
+    s.dependency 'ZFPlayer'
+    s.dependency 'ZFPlayer/Core'
+    s.dependency 'ZFPlayer/ControlView'
+    s.dependency 'ZFPlayer/AVPlayer'
 end

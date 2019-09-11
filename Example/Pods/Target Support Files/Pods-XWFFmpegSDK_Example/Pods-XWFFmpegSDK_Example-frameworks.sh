@@ -161,10 +161,42 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/XWFFmpegSDK/XWFFmpegSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JLRoutes/JLRoutes.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JXCategoryView/JXCategoryView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MyLayout/MyLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PAPreferences/PAPreferences.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZFPlayer/ZFPlayer.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/XWFFmpegSDK/XWFFmpegSDK.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/DateTools/DateTools.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JLRoutes/JLRoutes.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JPFPSStatus/JPFPSStatus.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JXCategoryView/JXCategoryView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MyLayout/MyLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/PAPreferences/PAPreferences.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell/UITableView_FDTemplateLayoutCell.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ZFPlayer/ZFPlayer.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

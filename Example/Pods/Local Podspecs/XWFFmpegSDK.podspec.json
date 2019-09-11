@@ -1,6 +1,6 @@
 {
   "name": "XWFFmpegSDK",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "summary": "A short description of XWFFmpegSDK.",
   "description": "封装ffmpegSDK",
   "homepage": "https://github.com/ly-080208@163.com/XWFFmpegSDK",
@@ -13,10 +13,10 @@
   },
   "source": {
     "git": "https://github.com/ly-080208@163.com/XWFFmpegSDK.git",
-    "tag": "1.0.0"
+    "tag": "1.0.1"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "9.3"
   },
   "pod_target_xcconfig": {
     "VALID_ARCHS[sdk=iphonesimulator*]": ""
@@ -25,5 +25,22 @@
   "public_header_files": "XWFFmpegSDK/**/*.h",
   "vendored_frameworks": "XWFFmpegSDK/Frameworks/*.framework",
   "requires_arc": true,
-  "resources": "XWFFmpegSDK/**/*.{bundle,png,plist}"
+  "resources": "XWFFmpegSDK/**/*.{bundle,png,plist}",
+  "dependencies": {
+    "mobile-ffmpeg-full": [
+      "~> 4.2.2"
+    ],
+    "ZFPlayer": [
+
+    ],
+    "ZFPlayer/Core": [
+
+    ],
+    "ZFPlayer/ControlView": [
+
+    ],
+    "ZFPlayer/AVPlayer": [
+
+    ]
+  }
 }
