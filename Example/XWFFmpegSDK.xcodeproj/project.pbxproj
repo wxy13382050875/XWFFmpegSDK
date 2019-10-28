@@ -39,6 +39,10 @@
 		2E83C733231E629000375940 /* XWBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83C729231E628F00375940 /* XWBaseTableViewCell.m */; };
 		2E83C735231E629000375940 /* XWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83C72E231E629000375940 /* XWBaseViewController.m */; };
 		2E83C745231E6EDB00375940 /* NSData+XWBase64String.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E83C744231E6EDB00375940 /* NSData+XWBase64String.m */; };
+		2EBD52B623308B100042393F /* white_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD52B323308B100042393F /* white_close@2x.png */; };
+		2EBD52B723308B100042393F /* white_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD52B423308B100042393F /* white_close.png */; };
+		2EBD52B823308B100042393F /* white_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EBD52B523308B100042393F /* white_close@3x.png */; };
+		2EBD52BB2330AA6C0042393F /* XWDragCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EBD52BA2330AA6C0042393F /* XWDragCellCollectionView.m */; };
 		2EDBF61A2326351E0022A2C3 /* JJOptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EDBF6172326351E0022A2C3 /* JJOptionView.m */; };
 		2EDBF61B2326351E0022A2C3 /* list_icon_drfault@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBF6182326351E0022A2C3 /* list_icon_drfault@3x.png */; };
 		2EDBF61C2326351E0022A2C3 /* list_icon_drfault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EDBF6192326351E0022A2C3 /* list_icon_drfault@2x.png */; };
@@ -129,6 +133,11 @@
 		2E83C72E231E629000375940 /* XWBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWBaseViewController.m; sourceTree = "<group>"; };
 		2E83C743231E6EDB00375940 /* NSData+XWBase64String.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+XWBase64String.h"; sourceTree = "<group>"; };
 		2E83C744231E6EDB00375940 /* NSData+XWBase64String.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+XWBase64String.m"; sourceTree = "<group>"; };
+		2EBD52B323308B100042393F /* white_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_close@2x.png"; sourceTree = "<group>"; };
+		2EBD52B423308B100042393F /* white_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_close.png; sourceTree = "<group>"; };
+		2EBD52B523308B100042393F /* white_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_close@3x.png"; sourceTree = "<group>"; };
+		2EBD52B92330AA6C0042393F /* XWDragCellCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWDragCellCollectionView.h; sourceTree = "<group>"; };
+		2EBD52BA2330AA6C0042393F /* XWDragCellCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWDragCellCollectionView.m; sourceTree = "<group>"; };
 		2EDBF6162326351E0022A2C3 /* JJOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJOptionView.h; sourceTree = "<group>"; };
 		2EDBF6172326351E0022A2C3 /* JJOptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJOptionView.m; sourceTree = "<group>"; };
 		2EDBF6182326351E0022A2C3 /* list_icon_drfault@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_icon_drfault@3x.png"; sourceTree = "<group>"; };
@@ -164,6 +173,7 @@
 		2EDBF6762328A0B70022A2C3 /* XWPicewiseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWPicewiseCell.m; sourceTree = "<group>"; };
 		2EDBF6772328A0B70022A2C3 /* XWPiecewiseReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWPiecewiseReusableView.h; sourceTree = "<group>"; };
 		2EDBF6782328A0B70022A2C3 /* XWPiecewiseReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWPiecewiseReusableView.m; sourceTree = "<group>"; };
+		2EDBF67D2328D27A0022A2C3 /* XWMacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMacroDefinition.h; sourceTree = "<group>"; };
 		33C418B94BAD8E7AD5668AFA /* Pods-XWFFmpegSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWFFmpegSDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-XWFFmpegSDK_Tests/Pods-XWFFmpegSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		3CAB1180B18C73000164DED9 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		3F66FE2749105F9E3F9A6F01 /* Pods-XWFFmpegSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XWFFmpegSDK_Example.release.xcconfig"; path = "Target Support Files/Pods-XWFFmpegSDK_Example/Pods-XWFFmpegSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -352,6 +362,7 @@
 		2E83C684231E5D2600375940 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				2EDBF67C2328D27A0022A2C3 /* Define */,
 				2EDBF65923289EF60022A2C3 /* Tool */,
 				2E83C720231E624C00375940 /* Base */,
 				2E83C685231E5D2600375940 /* Category */,
@@ -484,6 +495,11 @@
 		2EDBF65823289EBB0022A2C3 /* XWPiecewise */ = {
 			isa = PBXGroup;
 			children = (
+				2EBD52B92330AA6C0042393F /* XWDragCellCollectionView.h */,
+				2EBD52BA2330AA6C0042393F /* XWDragCellCollectionView.m */,
+				2EBD52B423308B100042393F /* white_close.png */,
+				2EBD52B323308B100042393F /* white_close@2x.png */,
+				2EBD52B523308B100042393F /* white_close@3x.png */,
 				2EDBF6732328A0B70022A2C3 /* XWPicewiseCell.h */,
 				2EDBF6762328A0B70022A2C3 /* XWPicewiseCell.m */,
 				2EDBF6742328A0B70022A2C3 /* XWPiecewiseControls.h */,
@@ -505,16 +521,24 @@
 		2EDBF65A23289EF60022A2C3 /* XWFFmpegManager */ = {
 			isa = PBXGroup;
 			children = (
-				2EDBF65B23289EF60022A2C3 /* XWImagePickerTool.h */,
 				2EDBF65C23289EF60022A2C3 /* XWFfmpegUtil.h */,
-				2EDBF65D23289EF60022A2C3 /* XWFileUtil.h */,
-				2EDBF65E23289EF60022A2C3 /* XWImageConvertVideo.h */,
-				2EDBF65F23289EF60022A2C3 /* XWImagePickerTool.m */,
 				2EDBF66023289EF60022A2C3 /* XWFfmpegUtil.m */,
-				2EDBF66123289EF60022A2C3 /* XWImageConvertVideo.m */,
+				2EDBF65D23289EF60022A2C3 /* XWFileUtil.h */,
 				2EDBF66223289EF60022A2C3 /* XWFileUtil.m */,
+				2EDBF65E23289EF60022A2C3 /* XWImageConvertVideo.h */,
+				2EDBF66123289EF60022A2C3 /* XWImageConvertVideo.m */,
+				2EDBF65B23289EF60022A2C3 /* XWImagePickerTool.h */,
+				2EDBF65F23289EF60022A2C3 /* XWImagePickerTool.m */,
 			);
 			path = XWFFmpegManager;
+			sourceTree = "<group>";
+		};
+		2EDBF67C2328D27A0022A2C3 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				2EDBF67D2328D27A0022A2C3 /* XWMacroDefinition.h */,
+			);
+			path = Define;
 			sourceTree = "<group>";
 		};
 		6003F581195388D10070C39A = {
@@ -650,9 +674,12 @@
 				2EDBF6712328A0AB0022A2C3 /* DPPhoto_library_delete .png in Resources */,
 				2EDBF61C2326351E0022A2C3 /* list_icon_drfault@2x.png in Resources */,
 				2EDBF6722328A0AB0022A2C3 /* DPPhoto_library.png in Resources */,
+				2EBD52B723308B100042393F /* white_close.png in Resources */,
 				2EDBF66E2328A0AB0022A2C3 /* DPPhoto_library_holdImage .png in Resources */,
 				2E7CD882231E11420084C95E /* Main.storyboard in Resources */,
+				2EBD52B623308B100042393F /* white_close@2x.png in Resources */,
 				2E7CD883231E11420084C95E /* LaunchScreen.storyboard in Resources */,
+				2EBD52B823308B100042393F /* white_close@3x.png in Resources */,
 				2EDBF61B2326351E0022A2C3 /* list_icon_drfault@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -752,6 +779,7 @@
 				2E83C745231E6EDB00375940 /* NSData+XWBase64String.m in Sources */,
 				2EDBF6292328909B0022A2C3 /* XWTextViewController.m in Sources */,
 				2E83C733231E629000375940 /* XWBaseTableViewCell.m in Sources */,
+				2EBD52BB2330AA6C0042393F /* XWDragCellCollectionView.m in Sources */,
 				2E83C6BC231E5D2600375940 /* UIColor+HQ.m in Sources */,
 				2E83C6C1231E5D2600375940 /* UIView+Extension.m in Sources */,
 				2E83C6C0231E5D2600375940 /* UIImage+HQGImage.m in Sources */,

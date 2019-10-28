@@ -7,11 +7,13 @@
 //
 
 #import "XWBaseCollectionViewCell.h"
-
+#import "XWImagePickerTool.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XWPicewiseCell : XWBaseCollectionViewCell
-
+@property(nonatomic,strong)XWImagePickerModel* model;
+/**是否抖动*/
+@property (nonatomic,assign) BOOL isBegin;
 @end
 
 NS_ASSUME_NONNULL_END

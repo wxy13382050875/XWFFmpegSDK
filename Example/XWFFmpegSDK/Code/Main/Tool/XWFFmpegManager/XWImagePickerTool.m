@@ -12,13 +12,17 @@
 #import "TZImageManager.h"
 #import "TZLocationManager.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+
+@implementation XWImagePickerModel
+@end
+
 static XWImagePickerTool *xwPicker = nil;
 
 @interface XWImagePickerTool ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,TZImagePickerControllerDelegate>
 @property (nonatomic, strong) TZImagePickerController *imagePickerVc;
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerCamera;
-@property (nonatomic,copy) void(^doneBlock)(NSArray* images);
+@property (nonatomic,copy) void(^doneBlock)(NSArray* items);
 @end
 
 
@@ -40,7 +44,7 @@ static XWImagePickerTool *xwPicker = nil;
     return xwPicker;
 }
 
--(void)openImagePicker:(XWImagePickerType)pickerType maxCount:(NSInteger)maxCount viewController:(UIViewController*) viewcontroller doneBlock:(void(^)(NSArray* images))doneBlock{
+-(void)openImagePicker:(XWImagePickerType)pickerType maxCount:(NSInteger)maxCount viewController:(UIViewController*) viewcontroller doneBlock:(void(^)(NSArray* items))doneBlock{
     self.imagePickerVc = nil;
     self.imagePickerVc.maxImagesCount = maxCount;
     switch (pickerType) {
@@ -86,7 +90,7 @@ static XWImagePickerTool *xwPicker = nil;
 }
 
 //打开相机
--(void)openCamera :(UIViewController*) viewcontroller isRecord:(BOOL)isRecord isCamear:(BOOL)isCamear doneBlock:(void(^)(NSArray* images))doneBlock{
+-(void)openCamera :(UIViewController*) viewcontroller isRecord:(BOOL)isRecord isCamear:(BOOL)isCamear doneBlock:(void(^)(NSArray* items))doneBlock{
     self.doneBlock = doneBlock;
 //    __weak typeof(self) weakSelf = self;
     [[TZLocationManager manager] startLocationWithSuccessBlock:^(NSArray<CLLocation *> *locations) {
@@ -119,24 +123,76 @@ static XWImagePickerTool *xwPicker = nil;
 // 如果用户选择了一个视频且allowPickingMultipleVideo是NO，下面的代理方法会被执行
 -(void)imagePickerController:(TZImagePickerController *)picker didFinishPickingVideo:(UIImage *)coverImage sourceAssets:(PHAsset *)asset{
     NSLog(@"didFinishPickingVideo");
+    [self assetConversionImagePath:@[asset] images:@[coverImage]];
 }
 //如果用户选择了一个gif图片且allowPickingMultipleVideo是NO，下面的代理方法会被执行
 -(void)imagePickerController:(TZImagePickerController *)picker didFinishPickingGifImage:(UIImage *)animatedImage sourceAssets:(PHAsset *)asset{
     NSLog(@"didFinishPickingGifImage");
+    
 }
--(void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
-    NSLog(@"didFinishPickingPhotos");
-}
+
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos{
     NSLog(@"didFinishPickingPhotos infos");
+
+    [self assetConversionImagePath:assets images:photos];
+    
 }
 - (void)tz_imagePickerControllerDidCancel:(TZImagePickerController *)picker{
     NSLog(@"tz_imagePickerControllerDidCancel");
 }
+
+-(void)assetConversionImagePath:(NSArray *)assets images:(NSArray<UIImage *> *)photos{
+    int __block index = 0;
+    NSMutableArray* urls = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < assets.count; i++) {
+        // 获取一个资源（PHAsset）
+        PHAsset *phAsset = assets[i];
+        if (phAsset.mediaType == PHAssetMediaTypeVideo) {
+            PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+            options.version = PHImageRequestOptionsVersionCurrent;
+            options.deliveryMode = PHVideoRequestOptionsDeliveryModeAutomatic;
+            
+            [[PHImageManager defaultManager] requestAVAssetForVideo:phAsset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+                AVURLAsset *urlAsset = (AVURLAsset *)asset;
+                
+                XWImagePickerModel* model = [XWImagePickerModel new];
+                model.url = urlAsset.URL;
+                model.image = photos[i];
+                [urls addObject:model];
+                
+                index ++;
+                
+                if (index == assets.count) {
+                    self.doneBlock(urls);
+                }
+                //                NSLog(@"%@",data);
+            }];
+        } else if(phAsset.mediaType == PHAssetMediaTypeImage){
+            [[PHImageManager defaultManager] requestImageForAsset:phAsset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:nil resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                //                1.获取照片的url
+                NSURL * url = [info objectForKey:@"PHImageFileURLKey"];
+                //                2.获取视频的地址
+                //
+                XWImagePickerModel* model = [XWImagePickerModel new];
+                model.url = url;
+                model.image = photos[i];
+                index ++;
+                
+                if (index == assets.count) {
+                    self.doneBlock(urls);
+                }
+            }];
+            
+        }
+        
+        
+    }
+    
+}
 - (TZImagePickerController *)imagePickerVc {
     if (_imagePickerVc == nil) {
         _imagePickerVc = [[TZImagePickerController alloc] init];
-        _imagePickerVc.delegate = self;
+        _imagePickerVc.pickerDelegate = self;
         
         
     }

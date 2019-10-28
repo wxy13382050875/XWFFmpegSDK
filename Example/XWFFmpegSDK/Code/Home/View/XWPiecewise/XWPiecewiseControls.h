@@ -11,7 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XWPiecewiseControls : XWBaseView
-
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, copy) void(^openPhotoAlbumBlock)(NSIndexPath* indexPath);
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+
+@interface XWImagePickerModel : NSObject
+
+@property (nonatomic, copy) NSURL* url;
+
+@property (nonatomic, copy) UIImage *image;
+
+@end
+
+
 typedef NS_ENUM(NSInteger, XWImagePickerType) {
     XWImagePickerType_SingleVideo ,//单个视频
     XWImagePickerType_MultipleVideo ,//多个视频
@@ -22,11 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
 +(instancetype)getInstance;
 
 
--(void)openImagePicker:(XWImagePickerType)pickerType maxCount:(NSInteger)maxCount viewController:(UIViewController*) viewcontroller doneBlock:(void(^)(NSArray* images))doneBlock;
+-(void)openImagePicker:(XWImagePickerType)pickerType maxCount:(NSInteger)maxCount viewController:(UIViewController*) viewcontroller doneBlock:(void(^)(NSArray* items))doneBlock;
 
 
 //打开相机
--(void)openCamera :(UIViewController*) viewcontroller isRecord:(BOOL)isRecord isCamear:(BOOL)isCamear doneBlock:(void(^)(NSArray* images))doneBlock;
+-(void)openCamera :(UIViewController*) viewcontroller isRecord:(BOOL)isRecord isCamear:(BOOL)isCamear doneBlock:(void(^)(NSArray* items))doneBlock;
 @end
 
 NS_ASSUME_NONNULL_END

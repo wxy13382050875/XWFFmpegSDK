@@ -18,10 +18,11 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "MBProgressHUD+HQ.h"
 #import "HQNetworking.h"
+#import "XWMacroDefinition.h"
 #endif
 
 
 // 网络地址
 #define KHttpUrl @"http://wojia.dhcloud.cn/openapi/"
-#define Placeholder_Image [UIImage imageNamed:@"DPPhoto_library_holdImage"] //占位图
-#define RGB_COLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)] //颜色
+
+

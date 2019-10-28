@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface XWPiecewiseReusableView : XWBaseCollectionReusableView
-
+@property (nonatomic, copy) void(^addMaterialBlock)();
 @end
 
 NS_ASSUME_NONNULL_END

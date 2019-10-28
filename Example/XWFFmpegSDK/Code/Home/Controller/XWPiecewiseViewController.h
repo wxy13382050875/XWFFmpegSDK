@@ -6,13 +6,13 @@
 //  Copyright © 2019 ly-080208@163.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "XWBaseViewController.h"
 #import "JXCategoryListContainerView.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XWPiecewiseViewController : UIViewController<JXCategoryListContentViewDelegate>
+@interface XWPiecewiseViewController : XWBaseViewController<JXCategoryListContentViewDelegate>
 @property (nonatomic, strong) UINavigationController *naviController;
-
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -71,6 +71,13 @@ static UIActionSheetDelegateImpl * delegateImpl;
 //
 @property (nonatomic, strong) JXCategoryTitleImageView *myCategoryView;
 @property (nonatomic, strong) JXCategoryListContainerView *listContainerView;
+
+
+@property (nonatomic, strong) XWStickersViewController *stickersList;
+@property (nonatomic, strong) XWTextViewController *TextList;
+@property (nonatomic, strong) XWPiecewiseViewController *piecewiseList;
+@property (nonatomic, strong) XWSoundViewController *soundList;
+@property (nonatomic, strong) XWClipViewController *clipList;
 @end
 
 @implementation HQHomeViewController
@@ -130,43 +137,16 @@ static UIActionSheetDelegateImpl * delegateImpl;
     }];
     [self.view addSubview:self.listContainerView];
     [self.listContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).offset(10);
-        make.right.equalTo(self.view).offset(-10);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
         make.bottom.equalTo(self.myCategoryView.mas_top);
         make.height.mas_equalTo(100);
     }];
     self.myCategoryView.contentScrollView = self.listContainerView.scrollView;
     self.myCategoryView.defaultSelectedIndex = 2;
-    //    [self.view addSubview:self.photoView];
-//    [self.photoView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.view).offset(10);
-//        make.right.equalTo(self.view).offset(-10);
-//        make.height.mas_equalTo(60);
-//        make.bottom.equalTo(self.myCategoryView.mas_top).offset(-5);
-//    }];
-    
-    
-    
-    
-//    [self.view addSubview:self.optionView];
-//    [self.optionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.view).offset(10);
-//        make.size.mas_equalTo(CGSizeMake((self.view.frame.size.width - 40)/3, 40));
-//
-//        make.bottom.equalTo(self.listContainerView.mas_top).offset(-10);
-//    }];
-//    [self.view addSubview:self.videoCodecView];
-//    [self.videoCodecView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.optionView.mas_right).offset(10);
-//        make.size.mas_equalTo(CGSizeMake((self.view.frame.size.width - 40)/3, 40));
-//        make.bottom.equalTo(self.listContainerView.mas_top).offset(-10);
-//    }];
-//    [self.view addSubview:self.conversionBtn];
-//    [self.conversionBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(self.view).offset(-10);
-//        make.size.mas_equalTo(CGSizeMake((self.view.frame.size.width - 40)/3, 40));
-//        make.bottom.equalTo(self.listContainerView.mas_top).offset(-10);
-//    }];
+    [self.listContainerView didClickSelectedItemAtIndex:2];
+
+    [self pushTZImagePickerController];
    
 }
 #pragma mark -  UIActionSheetDelegate
@@ -248,7 +228,7 @@ static UIActionSheetDelegateImpl * delegateImpl;
         
     } success:^(NSString * _Nonnull output) {
         
-        [self playVideo:outputPath];
+//        [self playVideo:outputPath];
         
     } failure:^(NSString * _Nonnull error) {
         
@@ -256,31 +236,39 @@ static UIActionSheetDelegateImpl * delegateImpl;
     
 }
 
--(void)playVideo:(NSString*)path{
+-(void)playVideo:(NSURL*)url{
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.player.assetURL = [NSURL fileURLWithPath:path];
+        self.player.assetURL = url;
+        [self.controlView showTitle:@"Apple" coverURLString:@"" fullScreenMode:ZFFullScreenModeAutomatic];
+    });
+    
+}
+-(void)playVideoForArray:(NSArray*)urls{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableArray* items = [[NSMutableArray alloc] init];
+        for (XWImagePickerModel* model in urls) {
+            [items addObject:model.url];
+        }
+        self.player.assetURLs = items;
+        [self.player playTheIndex:0];
         [self.controlView showTitle:@"Apple" coverURLString:@"" fullScreenMode:ZFFullScreenModeAutomatic];
     });
     
 }
 - (void)pushTZImagePickerController {
-    XWImagePickerType type ;
-    NSInteger maxCount = 0;
-    if (self.optionIndex  == 0) {
-        type = XWImagePickerType_SingleVideo;
-        maxCount = 1;
-    } else if (self.optionIndex  == 1) {
-        type = XWImagePickerType_MultipleVideo;
-        maxCount = 20;
-    } else if (self.optionIndex  == 2) {
-        type = XWImagePickerType_Photo;
-        maxCount = 20;
-    } else {
-        type = XWImagePickerType_GifImage;
-        maxCount = 1;
-    }
-    [[XWImagePickerTool getInstance] openImagePicker:type maxCount:maxCount viewController:self doneBlock:^(NSArray * _Nonnull images) {
+   
+    [[XWImagePickerTool getInstance] openImagePicker:XWImagePickerType_MultipleVideo maxCount:5 viewController:self doneBlock:^(NSArray * _Nonnull urls) {
+        
+        NSLog(@"urls = %@",urls);
+//        NSMutableArray *temp = @[].mutableCopy;
+//
+//        for (XWImagePickerModel* model in urls) {
+//            [temp addObject:@[model]];
+//        }
+        self.piecewiseList.dataSource = urls.mutableCopy;
+        [self playVideoForArray:urls];
         
     }];
     
@@ -296,33 +284,6 @@ static UIActionSheetDelegateImpl * delegateImpl;
     }];
 }
 
-
-
-//-(XWPhotoSelectorView*)photoView{
-//
-//    if (!_photoView) {
-//        _photoView = [[XWPhotoSelectorView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 60)];
-//
-//        _photoView.lineNumber = 3;
-//        _photoView.lineSpacing = 5;
-//        _photoView.allowLongPressEditPhoto = YES;
-//        _photoView.delegate = self;
-//        _photoView.maxImagesCount = 9;
-//        _photoView.photoScrollDirection = XWPhotoScrollDirectionHorizontal;
-//    }
-//    return _photoView;
-//}
-//
-//-(UIButton*)conversionBtn{
-//    if (!_conversionBtn) {
-//        _conversionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        _conversionBtn.backgroundColor = RGB_COLOR(0, 0, 0, 0.5);
-//
-//        [_conversionBtn setTitle:@"开始" forState:UIControlStateNormal];
-//        [_conversionBtn addTarget:self action:@selector(conversionClick) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    return _conversionBtn;
-//}
 -(ZFAVPlayerManager*)playerManager{
     if (!_playerManager) {
          _playerManager = [[ZFAVPlayerManager alloc] init];
@@ -345,7 +306,7 @@ static UIActionSheetDelegateImpl * delegateImpl;
         /// 播放完成
         _player.playerDidToEnd = ^(id  _Nonnull asset) {
             @strongify(self)
-            [self.player playerReadyToPlay];
+            [self.player playTheNext];
 
         };
         
@@ -409,6 +370,7 @@ static UIActionSheetDelegateImpl * delegateImpl;
         _myCategoryView.selectedImageNames = selectedImageNames;
         _myCategoryView.imageZoomEnabled = YES;
         _myCategoryView.imageZoomScale = 1;
+        _myCategoryView.delegate = self;
         _myCategoryView.imageTypes = @[@(JXCategoryTitleImageType_TopImage), @(JXCategoryTitleImageType_TopImage), @(JXCategoryTitleImageType_TopImage), @(JXCategoryTitleImageType_TopImage), @(JXCategoryTitleImageType_TopImage)];
 //        JXCategoryIndicatorLineView *lineView = [[JXCategoryIndicatorLineView alloc] init];
 //        lineView.indicatorWidth = 20;
@@ -449,26 +411,20 @@ static UIActionSheetDelegateImpl * delegateImpl;
 
 - (id<JXCategoryListContentViewDelegate>)listContainerView:(JXCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     if (index == 0) {
-        XWStickersViewController *list = [[XWStickersViewController alloc] init];
-        list.naviController = self.navigationController;
         
-        return list;
+        return self.stickersList;
     } else if (index == 1) {
-        XWTextViewController* list = [[XWTextViewController alloc] init];
-        list.naviController = self.navigationController;
-        return list;
+        
+        return self.TextList;
     } else if (index == 2) {
-        XWPiecewiseViewController* list = [[XWPiecewiseViewController alloc] init];
-        list.naviController = self.navigationController;
-        return list;
+        
+        return self.piecewiseList;
     } else if (index == 3) {
-        XWClipViewController* list = [[XWClipViewController alloc] init];
-        list.naviController = self.navigationController;
-        return list;
+        
+        return self.clipList;
     } else if (index == 4) {
-        XWSoundViewController* list = [[XWSoundViewController alloc] init];
-        list.naviController = self.navigationController;
-        return list;
+        
+        return self.soundList;
     }
     
     return nil;
@@ -476,6 +432,41 @@ static UIActionSheetDelegateImpl * delegateImpl;
 
 - (NSInteger)numberOfListsInlistContainerView:(JXCategoryListContainerView *)listContainerView {
     return 5;
+}
+-(XWStickersViewController*)stickersList{
+    if(!_stickersList){
+        _stickersList = [[XWStickersViewController alloc] init];
+        _stickersList.naviController = self.navigationController;
+    }
+    return _stickersList;
+}
+-(XWTextViewController*)TextList{
+    if(!_stickersList){
+        _TextList = [[XWTextViewController alloc] init];
+        _TextList.naviController = self.navigationController;
+    }
+    return _TextList;
+}
+-(XWPiecewiseViewController*)piecewiseList{
+    if(!_piecewiseList){
+        _piecewiseList = [[XWPiecewiseViewController alloc] init];
+        _piecewiseList.naviController = self.navigationController;
+    }
+    return _piecewiseList;
+}
+-(XWClipViewController*)clipList{
+    if(!_clipList){
+        _clipList = [[XWClipViewController alloc] init];
+        _clipList.naviController = self.navigationController;
+    }
+    return _clipList;
+}
+-(XWSoundViewController*)soundList{
+    if(!_soundList){
+        _soundList = [[XWSoundViewController alloc] init];
+        _soundList.naviController = self.navigationController;
+    }
+    return _soundList;
 }
  @end
 

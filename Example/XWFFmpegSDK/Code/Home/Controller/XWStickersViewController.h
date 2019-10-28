@@ -6,11 +6,11 @@
 //  Copyright © 2019 ly-080208@163.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "XWBaseViewController.h"
 #import "JXCategoryListContainerView.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface XWStickersViewController : UIViewController<JXCategoryListContentViewDelegate>
+@interface XWStickersViewController : XWBaseViewController<JXCategoryListContentViewDelegate>
 @property (nonatomic, strong) UINavigationController *naviController;
 
 @end
